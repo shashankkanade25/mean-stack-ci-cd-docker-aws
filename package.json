@@ -1,0 +1,27 @@
+{
+  "name": "mean-stack-ci-cd-docker-aws",
+  "version": "1.0.0",
+  "description": "MEAN Stack CRUD Application with CI/CD, Docker, and AWS deployment",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm start",
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend"
+  },
+  "keywords": [
+    "mean-stack",
+    "mongodb",
+    "express",
+    "angular",
+    "nodejs",
+    "docker",
+    "ci-cd"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

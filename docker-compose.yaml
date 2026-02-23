@@ -1,0 +1,41 @@
+services:
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - mean-network
+
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: always
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/dd_db
+    depends_on:
+      - mongo
+    ports:
+      - "8080:8080"
+    networks:
+      - mean-network
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"   # use 8081 locally (avoid port 80 conflict)
+    networks:
+      - mean-network
+
+volumes:
+  mongo-data:
+
+networks:
+  mean-network:
+    driver: bridge
