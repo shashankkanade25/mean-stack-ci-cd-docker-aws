@@ -28,6 +28,7 @@ dist/
 build/
 out/
 .angular/
+deploy.yml
 
 # Package lock files (optional - uncomment if you don't want to commit them)
 # package-lock.json
