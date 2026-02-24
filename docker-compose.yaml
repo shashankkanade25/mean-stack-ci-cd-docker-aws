@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
 
   mongo:
@@ -10,7 +12,7 @@ services:
       - mean-network
 
   backend:
-    build: ./backend
+    image: shashankkanade25/mean-backend:latest
     container_name: backend
     restart: always
     environment:
@@ -23,13 +25,13 @@ services:
       - mean-network
 
   frontend:
-    build: ./frontend
+    image: shashankkanade25/mean-frontend:latest
     container_name: frontend
     restart: always
     depends_on:
       - backend
     ports:
-      - "8081:80"  
+      - "80:80"
     networks:
       - mean-network
 
